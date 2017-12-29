@@ -9,5 +9,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface SchedulerTimeout {
     String name() default "";
-    long timeout() default 60 * 60 * 1000;
+    long timeout() default -1;
+    String timeoutString() default "";
 }
