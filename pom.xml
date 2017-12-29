@@ -4,7 +4,7 @@
 
     <groupId>com.lindar.tasktimeout</groupId>
     <artifactId>tasktimeout-parent</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>pom</packaging>
 
     <modules>
