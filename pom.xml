@@ -4,7 +4,7 @@
 
     <groupId>com.lindar.tasktimeout</groupId>
     <artifactId>tasktimeout-parent</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
     <packaging>pom</packaging>
 
     <modules>
@@ -108,7 +108,12 @@
                         <hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
                         <versionTagPrefix>v</versionTagPrefix>
                     </flowInitContext>
+                    <!--<enableSshAgent>true</enableSshAgent>
+                    <pushFeatures>true</pushFeatures>
+                    <pushReleases>true</pushReleases>
+                    <pushHotfixes>true</pushHotfixes>-->
                     <noDeploy>true</noDeploy>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
                 </configuration>
             </plugin>
         </plugins>
