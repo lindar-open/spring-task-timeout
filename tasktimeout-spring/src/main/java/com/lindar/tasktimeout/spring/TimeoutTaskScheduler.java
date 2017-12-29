@@ -2,6 +2,7 @@ package com.lindar.tasktimeout.spring;
 
 import com.lindar.tasktimeout.core.TimeoutManager;
 import com.lindar.tasktimeout.core.TimeoutRunnable;
+import org.springframework.beans.factory.DisposableBean;
 import org.springframework.scheduling.TaskScheduler;
 import org.springframework.scheduling.Trigger;
 
@@ -11,7 +12,7 @@ import java.util.concurrent.ScheduledFuture;
 import static java.util.Objects.requireNonNull;
 
 
-public class TimeoutTaskScheduler implements TaskScheduler {
+public class TimeoutTaskScheduler implements TaskScheduler, DisposableBean {
 
     private final TaskScheduler taskScheduler;
     private final TimeoutManager timeoutManager;
@@ -53,5 +54,12 @@ public class TimeoutTaskScheduler implements TaskScheduler {
 
     private Runnable wrap(Runnable task) {
         return new TimeoutRunnable(task, timeoutManager);
+    }
+
+    @Override
+    public void destroy() throws Exception {
+        if (taskScheduler instanceof DisposableBean) {
+            ((DisposableBean) taskScheduler).destroy();
+        }
     }
 }

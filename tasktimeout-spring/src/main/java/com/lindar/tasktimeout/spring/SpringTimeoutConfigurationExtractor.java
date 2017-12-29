@@ -19,7 +19,7 @@ import java.util.Optional;
 @Slf4j
 public class SpringTimeoutConfigurationExtractor implements TimeoutConfigurationExtractor {
 
-    private static final long DEFAULT_TIMEOUT = Duration.ofHours(1).toMillis();
+    static final long DEFAULT_TIMEOUT = Duration.ofHours(1).toMillis();
 
     private final StringValueResolver embeddedValueResolver;
 
