@@ -113,6 +113,7 @@
                     <pushReleases>true</pushReleases>
                     <pushHotfixes>true</pushHotfixes>-->
                     <noDeploy>true</noDeploy>
+                    <squash>true</squash>
                     <autoVersionSubmodules>true</autoVersionSubmodules>
                 </configuration>
             </plugin>

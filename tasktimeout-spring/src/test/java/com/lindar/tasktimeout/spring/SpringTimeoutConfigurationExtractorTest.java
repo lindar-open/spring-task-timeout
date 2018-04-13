@@ -98,7 +98,6 @@ public class SpringTimeoutConfigurationExtractorTest {
 
     @SchedulerTimeout(name = "timeoutName", timeout = 10)
     public void annotatedMethodWithPositiveGracePeriod() {
-
     }
 
     @SchedulerTimeout(name = "timeoutName", timeoutString = "10")

@@ -48,7 +48,7 @@ public class DefaultScheduledTimeoutConfigurationBuilder implements ScheduledTim
 
 
     @Override
-    public ScheduledTimeoutConfiguration build() {
+    public SpringTimeoutTaskSchedulerFactoryBean build() {
         return new SpringTimeoutTaskSchedulerFactoryBean(taskScheduler, defaultTimeout);
     }
 }

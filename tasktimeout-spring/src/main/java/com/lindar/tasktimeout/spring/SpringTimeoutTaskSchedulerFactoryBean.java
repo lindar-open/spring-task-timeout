@@ -6,7 +6,7 @@ import org.springframework.context.EmbeddedValueResolverAware;
 import org.springframework.scheduling.TaskScheduler;
 import org.springframework.util.StringValueResolver;
 
-public class SpringTimeoutTaskSchedulerFactoryBean  extends AbstractFactoryBean<TimeoutTaskScheduler> implements EmbeddedValueResolverAware, ScheduledTimeoutConfiguration  {
+public class SpringTimeoutTaskSchedulerFactoryBean  extends AbstractFactoryBean<TimeoutTaskScheduler> implements EmbeddedValueResolverAware  {
 
     private final TaskScheduler taskScheduler;
 

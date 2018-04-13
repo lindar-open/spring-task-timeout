@@ -6,6 +6,10 @@ import java.util.concurrent.ScheduledExecutorService;
 
 public interface ScheduledTimeoutConfigurationBuilder {
 
+    static ScheduledTimeoutConfigurationBuilderWithoutTaskScheduler builder(){
+        return new DefaultScheduledTimeoutConfigurationBuilder();
+    }
+
     interface ScheduledTimeoutConfigurationBuilderWithoutTaskScheduler {
         ScheduledTimeoutConfigurationBuilderWithoutDefaultTimeout withPoolSize(int poolSize);
         ScheduledTimeoutConfigurationBuilderWithoutDefaultTimeout withExecutorService(ScheduledExecutorService scheduledExecutorService);
@@ -17,6 +21,6 @@ public interface ScheduledTimeoutConfigurationBuilder {
     }
 
     interface ConfiguredScheduledTimeoutConfigurationBuilder {
-        ScheduledTimeoutConfiguration build();
+        SpringTimeoutTaskSchedulerFactoryBean build();
     }
 }

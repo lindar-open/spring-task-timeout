@@ -28,10 +28,11 @@ public class DefaultTimeoutManager implements TimeoutManager {
             task.run();
         } else {
             TimeoutConfiguration timeoutConfiguration = timeoutConfigurationOptional.get();
+            CompletableFuture<Void> future = CompletableFuture.runAsync(task);
             try {
                 log.debug("Schedule {} running with delay of {} mills.", timeoutConfiguration.getName(), timeoutConfiguration.getTimeout());
                 Instant startTime = Instant.now();
-                CompletableFuture.runAsync(task).get(timeoutConfiguration.getTimeout(), TimeUnit.MILLISECONDS);
+                future.get(timeoutConfiguration.getTimeout(), TimeUnit.MILLISECONDS);
                 long durationMillis = Instant.now().toEpochMilli() - startTime.toEpochMilli();
                 log.debug("Schedule {} finished in {} mills.", timeoutConfiguration.getName(), durationMillis);
             } catch (InterruptedException e) {
@@ -40,6 +41,7 @@ public class DefaultTimeoutManager implements TimeoutManager {
                 log.debug("Exception in schedule {}.", timeoutConfiguration.getName());
             } catch (TimeoutException e) {
                 log.debug("Timeout exceeded {}.", timeoutConfiguration.getName());
+                future.cancel(true);
             }
 
         }
